@@ -1,0 +1,23 @@
+[package]
+name = "api"
+version = "0.1.0"
+authors = ["mattmac4241 <mattmac4241@yahoo.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bytes = "0.5.4"
+hyper = "0.13"
+serde_json = "1.0.48"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "0.2", features = ["full"] }
+futures = "0.3"
+futures-util = "0.3.4"
+env_logger = "0.5.3"
+log = "0.4"
+pretty_env_logger = "0.4.0"
+bcrypt = "0.6"
+sqlx = { version = "0.3.0-alpha.2", features = ["postgres", "macros"] }
+dotenv = "0.15.0"
+anyhow = "1.0"
