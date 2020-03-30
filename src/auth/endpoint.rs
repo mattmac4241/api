@@ -18,14 +18,20 @@ pub async fn post_response<'a>(req: Request<Body>, connection: &'a PgPool) -> Re
     // Parse body for user signup
     let parsed = match parse_body(body) {
         Ok(user) => user,
-        Err(_) => return Ok(bad_request().unwrap()),
+        Err(err) => {
+            println!("{}", err);
+            return Ok(bad_request().unwrap())
+        },
     };
 
     println!("{}", parsed);
     // Create User
     let id = match create(connection, parsed).await {
         Ok(user_id) => user_id,
-        Err(_) => return Ok(bad_request().unwrap()),
+        Err(err) => {
+            println!("{}", err);
+            return Ok(bad_request().unwrap())
+        },
     };
     println!("User created with id: {}", id);
 

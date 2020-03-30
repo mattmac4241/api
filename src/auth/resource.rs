@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::fmt;
-//use bcrypt::{DEFAULT_COST, hash, verify};
+use bcrypt::{DEFAULT_COST, hash};
 
 #[derive(Serialize, Deserialize)]
 pub struct UserSignup {
@@ -14,10 +14,10 @@ impl fmt::Display for UserSignup {
     }
 }
 
-//fn hash_password(password: String) -> Result<String, dyn std::error::Error> {
-//    hash(password, DEFAULT_COST).unwrap()
-//}
-//
+pub fn hash_password(password: String) -> anyhow::Result<String> {
+    Ok(hash(password, DEFAULT_COST)?)
+}
+
 //fn verify_password(password: String, hashed: String) -> bool {
 //    verify(password, &hashed).unwrap()
 //}
